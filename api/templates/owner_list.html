@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Owners List</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Sale Opportunity</th>
+            <th>Cars</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for owner in owners %}
+        <tr>
+            <td>{{ owner.id }}</td>
+            <td>{{ owner.name }}</td>
+            <td>{{ owner.is_sale_opportunity }}</td>
+            <td>
+                <ul>
+                    {% for car in owner.cars %}
+                    <li>{{ car.model }} - {{ car.color }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
